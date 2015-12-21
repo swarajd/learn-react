@@ -2,25 +2,28 @@ import React from 'react';
 
 //-- stateful component
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      txt: 'this is the state text'
+    }
+  }
+  update(e) {
+    this.setState({
+      txt: e.target.value
+    })
+  }
   render() {
-    let txt = this.props.txt
-    return <h1>{txt}</h1>
+    return (
+      <div>
+        <input type="text" 
+          //update the state every time it changes
+          onChange={this.update.bind(this)}/>
+        <h1>{this.state.txt}</h1>
+      </div>
+    )
   }
 }
 
-//-- we can set the types of the properties
-App.propTypes = {
-  txt: React.PropTypes.string,
-  cat: React.PropTypes.number.isRequired
-}
-
-//-- we can set default values for the properties
-App.defaultProps = {
-  txt: 'default txt value',
-  cat: 21
-}
-
-//-- stateless component
-// const App = () => <h1>hello world</h1>
 
 export default App;
