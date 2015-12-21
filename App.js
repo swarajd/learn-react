@@ -3,13 +3,21 @@ import React from 'react';
 //-- stateful component
 class App extends React.Component {
   render() {
-    return (
-      <div>
-        <h1>Hello world</h1>
-        <b>Bold</b>
-      </div>
-    )
+    let txt = this.props.txt
+    return <h1>{txt}</h1>
   }
+}
+
+//-- we can set the types of the properties
+App.propTypes = {
+  txt: React.PropTypes.string,
+  cat: React.PropTypes.number.isRequired
+}
+
+//-- we can set default values for the properties
+App.defaultProps = {
+  txt: 'default txt value',
+  cat: 21
 }
 
 //-- stateless component
