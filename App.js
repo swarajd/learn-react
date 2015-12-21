@@ -1,4 +1,5 @@
 import React from 'react';
+import FilteredList from './FilteredList';
 
 //-- stateful component
 class App extends React.Component {
@@ -20,6 +21,7 @@ class App extends React.Component {
           //update the state every time it changes
           onChange={this.update.bind(this)}/>
         <h1>{this.state.txt}</h1>
+        <FilteredList />
       </div>
     )
   }
