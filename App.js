@@ -25,5 +25,8 @@ class App extends React.Component {
   }
 }
 
+// that's all the tutorial provided for free...
+// this commit is a spacer between the previous tutorial and the next one
+
 
 export default App;
