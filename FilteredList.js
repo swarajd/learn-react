@@ -27,7 +27,6 @@ class FilteredList extends React.Component {
   }
   
   filterList(event) {
-    console.log('filter list is being called');
     var updatedList = this.state.initialItems;
     updatedList = updatedList.filter(function(item) {
       return item.toLowerCase().search(
@@ -39,11 +38,10 @@ class FilteredList extends React.Component {
   }
 
   render() {
+    //nesting components is useful
     return (
       <div>
         <input type="text" placeholder="Search" onChange={this.filterList.bind(this)}/>
-
-        //nesting components is useful
         <List items={this.state.items}></List>
       </div>
     );
