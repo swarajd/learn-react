@@ -34,7 +34,7 @@ class App extends React.Component {
       <div>
         <input type="text" value={this.state.curTask} onChange={this.updateTask.bind(this)}/>
         <button onClick={this.addNote.bind(this)}> + </button>
-        <Notes items={notes} onEdit={this.editNote.bind(this)}></Notes>
+        <Notes items={notes} onEdit={this.editNote.bind(this)} onDelete={this.deleteNote.bind(this)}></Notes>
       </div>
     )
   }
@@ -49,8 +49,28 @@ class App extends React.Component {
     })
   }
 
-  editNote(noteID, task) {
-    console.log('note edited', noteID, task);
+  editNote(id, task) {
+    const notes = this.state.notes.map(function(note) {
+      if (note.id === id) {
+        note.task = task;
+      }
+
+      return note;
+    });
+
+    this.setState({
+      notes: notes
+    });
+  }
+
+  deleteNote(id) {
+    const notes = this.state.notes.filter(function(note) {
+      return note.id !== id;
+    });
+
+    this.setState({
+      notes: notes
+    });
   }
 
   updateTask(e) {

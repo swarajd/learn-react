@@ -33,7 +33,6 @@ export class Note extends React.Component {
   }
 
   finishEdit(e) {
-    console.log(this.props);
     this.props.onEdit(e.target.value);
 
     this.setState({
@@ -41,17 +40,30 @@ export class Note extends React.Component {
     })
   }
 
-  renderNote() {
-    return (
-      <div onClick={this.edit.bind(this)}>{this.props.task}</div>
-    );
-  }
-
   edit() {
     this.setState({
       editing: true
     })
   }
+
+  renderDelete() {
+    return (
+      <button onClick={this.props.onDelete}>X</button>
+    )
+  }
+
+  renderNote() {
+    const onDelete = this.props.onDelete;
+
+    return (
+      <div onClick={this.edit.bind(this)}>
+        {this.props.task}
+        {onDelete ? this.renderDelete() : null}
+      </div>
+    );
+  }
+
+  
 }
 
 export default Note;
