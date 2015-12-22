@@ -22,16 +22,9 @@ class App extends React.Component {
           id: uuid.v4(),
           task: 'do chores'
         }
-      ]
+      ],
+      curTask: ''
     }
-  }
-
-  updateNote(e) {
-
-  }
-
-  addNote() {
-
   }
 
   render() {
@@ -39,9 +32,27 @@ class App extends React.Component {
 
     return (
       <div>
+        <input type="text" value={this.state.curTask} onChange={this.updateTask.bind(this)}/>
+        <button onClick={this.addNote.bind(this)}> + </button>
         <Notes items={notes}></Notes>
       </div>
     )
+  }
+
+  addNote() {
+    this.setState({
+      notes: this.state.notes.concat({
+        id: uuid.v4(),
+        task: this.state.curTask
+      }),
+      curTask: ''
+    })
+  }
+
+  updateTask(e) {
+    this.setState({
+      curTask: e.target.value
+    });
   }
 
 }
