@@ -6,19 +6,13 @@ export class Notes extends React.Component {
     var notes = this.props.items;
     return (
       <ul>
-      {
-        notes.map(this.renderNote)
-      }
+      
       </ul>
     );
   }
 
   renderNote(note) {
-    return (
-      <li key={note.id}>
-        {note.text}
-      </li>
-    )
+    
   }
 }
 
