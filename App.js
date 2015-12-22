@@ -3,25 +3,27 @@ import Notes from './Notes';
 import Note from './Note';
 import uuid from 'node-uuid';
 
-const notes = [
-  {
-    id: uuid.v4(),
-    task: 'learn webpack'
-  },
-  {
-    id: uuid.v4(),
-    task: 'learn react'
-  },
-  {
-    id: uuid.v4(),
-    task: 'do chores'
-  }
-]
-
 //-- stateful component
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      notes: [
+        {
+          id: uuid.v4(),
+          task: 'learn webpack'
+        },
+        {
+          id: uuid.v4(),
+          task: 'learn react'
+        },
+        {
+          id: uuid.v4(),
+          task: 'do chores'
+        }
+      ]
+    }
   }
 
   updateNote(e) {
@@ -33,6 +35,8 @@ class App extends React.Component {
   }
 
   render() {
+    const notes = this.state.notes;
+
     return (
       <div>
         <Notes items={notes}></Notes>
