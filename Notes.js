@@ -1,6 +1,7 @@
 import React from 'react';
 
 export class Notes extends React.Component {
+
   render() {
     var notes = this.props.items;
     return (
@@ -13,8 +14,13 @@ export class Notes extends React.Component {
   }
 
   renderNote(note) {
-    return <li key={note}>{note}</li>
+    return (
+      <li key={note.id}>
+        {note.text}
+      </li>
+    )
   }
 }
 
 export default Notes;
+

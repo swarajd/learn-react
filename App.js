@@ -1,6 +1,7 @@
 import React from 'react';
 import FilteredList from './FilteredList';
 import Notes from './Notes';
+import uuid from 'node-uuid';
 
 
 //-- stateful component
@@ -11,9 +12,18 @@ class App extends React.Component {
       txt: 'this is the state text',
       curNote: '',
       notes: [
-        "learn webpack",
-        "learn react",
-        "do chores"
+        {
+          id: uuid.v4(),
+          text: 'learn webpack'
+        },
+        {
+          id: uuid.v4(),
+          text: 'learn react'
+        },
+        {
+          id: uuid.v4(),
+          text: 'do chores'
+        }
       ]
     }
   }
@@ -31,7 +41,10 @@ class App extends React.Component {
 
   addNote() {
     this.setState({
-      notes: this.state.notes.concat(this.state.curNote),
+      notes: this.state.notes.concat({
+        id: uuid.v4(),
+        text: this.state.curNote
+      }),
       curNote: '',
     });
   }
@@ -47,6 +60,7 @@ class App extends React.Component {
         <FilteredList />
 
         <input type="text"
+          value={this.state.curNote}
           onChange={this.updateNote.bind(this)}/>
         <button onClick={this.addNote.bind(this)}>+</button>
         <Notes items={notes}></Notes>
