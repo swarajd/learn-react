@@ -8,7 +8,7 @@ export class Notes extends React.Component {
     return (
       <ul>
         {
-          notes.map(this.renderNote)
+          notes.map(this.renderNote, this)
         }
       </ul>
     );
@@ -17,7 +17,9 @@ export class Notes extends React.Component {
   renderNote(note) {
     return (
       <li key={note.id}>
-        <Note task={note.task} />
+        <Note 
+          task={note.task}
+          onEdit={this.props.onEdit.bind(null, note.id)} />
       </li>
     )
   }

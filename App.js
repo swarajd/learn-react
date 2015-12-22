@@ -34,7 +34,7 @@ class App extends React.Component {
       <div>
         <input type="text" value={this.state.curTask} onChange={this.updateTask.bind(this)}/>
         <button onClick={this.addNote.bind(this)}> + </button>
-        <Notes items={notes}></Notes>
+        <Notes items={notes} onEdit={this.editNote.bind(this)}></Notes>
       </div>
     )
   }
@@ -47,6 +47,10 @@ class App extends React.Component {
       }),
       curTask: ''
     })
+  }
+
+  editNote(noteID, task) {
+    console.log('note edited', noteID, task);
   }
 
   updateTask(e) {
