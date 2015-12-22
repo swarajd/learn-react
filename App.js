@@ -35,20 +35,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <ul>
-          {
-            notes.map(this.renderNote)
-          }
-        </ul>
+        <Notes items={notes}></Notes>
       </div>
-    )
-  }
-
-  renderNote(note) {
-    return (
-      <li key={note.id}>
-        <Note task={note.task} />
-      </li>
     )
   }
 
