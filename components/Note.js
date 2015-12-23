@@ -23,7 +23,7 @@ export class Note extends React.Component {
       autoFocus={true}
       defaultValue={this.props.task}
       onBlur={this.finishEdit.bind(this)}
-      onKeyPress={this.checkEnter} />;
+      onKeyPress={this.checkEnter.bind(this)} />;
   }
 
   checkEnter(e) {
